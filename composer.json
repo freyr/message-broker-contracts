@@ -1,0 +1,36 @@
+{
+    "name": "freyr/message-broker-contracts",
+    "description": "Shared contracts for Freyr Message Broker — interfaces, stamps, and attributes",
+    "type": "library",
+    "license": "MIT",
+    "keywords": [
+        "symfony",
+        "messenger",
+        "contracts",
+        "outbox-pattern",
+        "inbox-pattern",
+        "deduplication"
+    ],
+    "authors": [
+        {
+            "name": "Freyr Development Team"
+        }
+    ],
+    "require": {
+        "php": ">=8.2",
+        "freyr/identity": "^0.4",
+        "symfony/messenger": "^6.4|^7.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Freyr\\MessageBroker\\Contracts\\": "src/"
+        }
+    },
+    "config": {
+        "sort-packages": true,
+        "preferred-install": "dist",
+        "optimize-autoloader": true
+    },
+    "minimum-stability": "stable",
+    "prefer-stable": true
+}
