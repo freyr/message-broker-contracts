@@ -6,6 +6,7 @@ namespace Freyr\MessageBroker\Contracts;
 
 use Attribute;
 use InvalidArgumentException;
+use ReflectionClass;
 
 /**
  * MessageName Attribute.
@@ -16,11 +17,6 @@ use InvalidArgumentException;
 #[Attribute(Attribute::TARGET_CLASS)]
 final class MessageName
 {
-    use ResolvesFromClass;
-
-    /** @var array<class-string, static|null> */
-    private static array $cache = [];
-
     public function __construct(
         public readonly string $name,
     ) {
@@ -39,6 +35,12 @@ final class MessageName
      */
     public static function fromClass(object $message): ?string
     {
-        return self::resolve($message)?->name;
+        $attributes = (new ReflectionClass($message))->getAttributes(self::class);
+
+        if ($attributes === []) {
+            return null;
+        }
+
+        return $attributes[0]->newInstance()->name;
     }
 }
