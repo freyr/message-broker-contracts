@@ -11,7 +11,7 @@ use Symfony\Component\Messenger\Envelope;
  *
  * The envelope is the single source of truth. It contains:
  * - The OutboxMessage instance (unwrapped event)
- * - MessageIdStamp (stable UUID v7, survives redelivery)
+ * - MessageIdStamp (stable ULID, survives redelivery)
  * - MessageNameStamp (semantic name from #[MessageName])
  *
  * Implementations are responsible for:
